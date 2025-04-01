@@ -30,13 +30,11 @@ navbar:
     href: articles/using_standart.html
   - text: Reference
     href: reference/index.html
-  - text: Articles
+  - text: Computer setup
     href: articles/index.html
     menu:
-    - text: Get started
-      href: articles/using_standart.html
-    - text: Computer setup - Installation - Troubleshooting
-      href: articles/rad_genomics_computer_setup.html
+  - text: Computer setup - Installation - Troubleshooting
+    href: articles/rad_genomics_computer_setup.html
   - text: News
     href: news/index.html
   right:

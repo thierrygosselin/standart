@@ -12,7 +12,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-<img src="logo.png" align="right" height="100" alt="" />
+<!-- <img src="logo.png" align="right" height="100" alt="" /> -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
