@@ -7,7 +7,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2025--03--28-brightgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2025--04--01-brightgreen.svg)](/commits/master)
 <!-- badges: end -->
 
 standart provides R functions that help you solve the most common
@@ -21,7 +21,7 @@ complicated genomes.
 ### Who is it for ?
 
 The package is currently developed for my own projects and to help
-collaborators at CSIRO.
+colleagues at CSIRO.
 
 ## Installation
 
