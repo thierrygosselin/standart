@@ -2,7 +2,7 @@ url: https://thierrygosselin.github.io/standart
 
 template:
   bootstrap: 5
-  light-switch: true
+  light-switch: yes
 
 reference:
 - title: QC
