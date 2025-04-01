@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   using_standart: using_standart.html
-last_built: 2025-04-01T01:06Z
+last_built: 2025-04-01T01:09Z
 urls:
   reference: https://thierrygosselin.github.io/standart/reference
   article: https://thierrygosselin.github.io/standart/articles
