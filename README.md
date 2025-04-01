@@ -20,8 +20,7 @@ complicated genomes.
 
 ### Who is it for ?
 
-The package is currently developed for my own projects and to help
-colleagues at CSIRO.
+The package is currently developed for projects at CSIRO.
 
 ## Installation
 
