@@ -1,0 +1,64 @@
+---
+output: github_document
+---
+# standart <img src="man/figures/logo.png" align="right" height="200" alt="" />
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+
+<!-- badges: start -->
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-brightgreen.svg)](/commits/master)
+<!-- badges: end -->
+
+standart provides R functions that help you solve 
+the most common quality control challenges of 
+genome reduction sequences (DArT, RADseq, GBS, etc). 
+
+standart really shines in projects that requires consistency among sequencing runs and when samples are from animals with large and complicated genomes.
+
+### Who is it for ?
+
+The package is currently developed for my own projects and to help collaborators at CSIRO.
+
+## Installation
+
+You can install the development version of standart like so:
+
+``` r
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("thierrygosselin/standart")
+library(standart)
+```
+
+## Overview
+
+* Reads/sequences counter and length distribution.
+* Read depth plot that highlights read coverage groups. Distinct and unique reads with high coverage are repetitive elements that when assembled in locus are usually paralogs, retrotransposons, transposable elements, etc.
+* Noise reduction and fastq cleaning.
+* Data normalization/rarefaction to remove or reduce ascertainment bias driving populations polymorphism discovery bias, missing data patterns, individual heterozygosity problems or patterns.
+* Noise reduction and normalization will help to answer the question: are the differences between your samples: artifactual or biological.
+
+
+
+## Getting help
+
+* [Vignettes](https://thierrygosselin.github.io/standart/articles/index.html)
+* [Computer setup and troubleshooting](https://thierrygosselin.github.io/radiator/articles/rad_genomics_computer_setup.html)
+* My [github](https://github.com/thierrygosselin) as other packages to help in RAD/DArTseq analysis
+
+[![stackr](man/figures/stackr_logo.png){width=100px}](https://thierrygosselin.github.io/stackr/)
+[![radr](man/figures/radr_logo.png){width=100px}](https://thierrygosselin.github.io/radiator/)
+[![assigner](man/figures/assigner_logo.png){width=100px}](https://thierrygosselin.github.io/assigner/)
+[![grur](man/figures/grur_logo.png){width=100px}](https://thierrygosselin.github.io/grur/)
+
+
+

@@ -1,0 +1,39 @@
+Package: standart
+Title: standart: solves the most common challenges of genome reduction sequences quality control
+Version: 0.0.0.1
+Authors@R: c(
+  person("Thierry", "Gosselin", email = "thierry.gosselin@csiro.au", role = c("aut", "cre"))
+  )
+Maintainer: Thierry Gosselin <thierry.gosselin@csiro.au>
+Description: standart provides R functions that help you solve the most common challenges of genome reduction sequences quality control (DArT, RADseq, GBS, etc). standart really shines in projects that requires consistency among sequencing runs or when samples are from animal with large and complicated genomes.
+License: GPL-3
+LazyLoad: yes
+VignetteBuilder:
+    knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+ByteCompile: TRUE
+URL: https://thierrygosselin.github.io/standart/
+BugReports: https://github.com/thierrygosselin/standart/issues
+Depends:
+    R (>= 4.3)
+Imports: 
+    assertthat,
+    dplyr,
+    future,
+    future.apply,
+    ggplot2,
+    grDevices,
+    listenv,
+    magrittr,
+    parallel,
+    purrr,
+    rlang,
+    ShortRead,
+    stringi,
+    tibble,
+    vroom
+Suggests: 
+    knitr,
+    rmarkdown
