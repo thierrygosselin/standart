@@ -1,5 +1,5 @@
 
-# standart <img src="man/figures/logo.png" align="right" height="200" alt="" />
+# standart <a href='http://thierrygosselin.github.io/standart/'><img src='man/figures/logo.png' align="right" height="200" /></a>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
