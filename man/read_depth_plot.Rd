@@ -7,7 +7,7 @@
 read_depth_plot(
   fq.file,
   min.coverage.fig = 7L,
-  output = "02_read_depth_plot",
+  output = "read_depth_plot",
   parallel.core = parallel::detectCores() - 1
 )
 }
@@ -20,7 +20,7 @@ color on the figure.
 Default: \code{min.coverage.fig = 7L}.}
 
 \item{output}{(character, path) Where the figure will be saved.
-Default: \code{"02_read_depth_plot"}.}
+Default: \code{"read_depth_plot"}.}
 
 \item{parallel.core}{(integer) Enable parallel execution with the number of threads.
 Default: \code{parallel.core = parallel::detectCores() - 1}.}

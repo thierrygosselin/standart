@@ -12,7 +12,7 @@
 
 
 #' @param output (character, path) Where the figure will be saved.
-#' Default: \code{"02_read_depth_plot"}.
+#' Default: \code{"read_depth_plot"}.
 
 
 #' @param parallel.core (integer) Enable parallel execution with the number of threads.
@@ -64,7 +64,7 @@
 read_depth_plot <- function(
     fq.file,
     min.coverage.fig = 7L,
-    output = "02_read_depth_plot",
+    output = "read_depth_plot",
     parallel.core = parallel::detectCores() - 1
 ) {
 

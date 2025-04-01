@@ -84,7 +84,7 @@ read_counter <- function(
 ) {
 
   # test
-  # fq.files = "08_stacks_results/03_cleaned_fq/cleaned_fq/"
+  # fq.files = "/03_cleaned_fq/cleaned_fq/"
   # strata = "02_project_info/strata_count_reader.tsv"
   # plot.reads = TRUE
   # write = TRUE
@@ -112,8 +112,8 @@ read_counter <- function(
   }
 
   # Check for results folder
-  if (!dir.exists("08_stacks_results")) dir.create("08_stacks_results")
-  results.folder <- "08_stacks_results"
+  if (!dir.exists("standart_results")) dir.create("standart_results")
+  results.folder <- "standart_results"
 
   # get fq files ---------------------------------------------------------------
   if (assertthat::is.string(fq.files) && assertthat::is.dir(fq.files)) {
