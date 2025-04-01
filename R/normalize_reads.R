@@ -228,7 +228,7 @@ standart_normalize <- function(
 
   # check number of reads
   if (count.reads) {
-    n.reads <- read_count_one(fastq.files = fq.to.normalize) %$% NUMBER_READS
+    n.reads <- read_count_one(fq.files = fq.to.normalize) %$% NUMBER_READS
     if (n.reads < sample.reads) {
       message("Number of reads lower than threshold: no normalization")
       return(rep.name = NULL)
