@@ -81,19 +81,18 @@ clean.id <- standart::clean_fq(
   min.coverage.threshold = 7L,
   max.coverage.threshold = "high.coverage.unique.reads"
   )
-
 # for multiple samples in parallel
 # require(progressr) # to get a progress bar
 
- progressr::with_progress({
-   clean <- standart::clean_fq(
-     fq.files = 04_process_radtags,
-      min.coverage.threshold = 2L,
-      max.coverage.threshold = "high.coverage.unique.reads",
-      write.blacklist = TRUE,
-      write.blacklist.fasta = TRUE,
-      compress = FALSE
- )
- })
+ #progressr::with_progress(
+  # clean <- standart::clean_fq(
+   #  fq.files = 04_process_radtags,
+    # min.coverage.threshold = 2L,
+     #max.coverage.threshold = "high.coverage.unique.reads",
+     #write.blacklist = TRUE,
+     #write.blacklist.fasta = TRUE,
+     #compress = FALSE
+ #)
+ #)
 }
 }

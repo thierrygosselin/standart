@@ -1,4 +1,46 @@
-url: https://thierrygosselin.github.io/standart/
+url: https://thierrygosselin.github.io/standart
+
 template:
   bootstrap: 5
+  light-switch: true
+
+
+reference:
+- title: QC
+  contents:
+  - read_counter
+  - read_depth_plot
+
+- title: Utility
+  contents:
+  - clean_fq
+  - normalize_reads
+
+- title: Internal
+  contents:
+  - reads_length_distribution
+
+navbar:
+  title: ~
+  type: default
+  left:
+  - text: Installation
+    href: index.html
+  - text: Get started
+    href: articles/using_standart.html
+  - text: Reference
+    href: reference/index.html
+  - text: Articles
+    href: articles/index.html
+    menu:
+    - text: Get started
+      href: articles/using_standart.html
+    - text: Computer setup - Installation - Troubleshooting
+      href: articles/rad_genomics_computer_setup.html
+  - text: News
+    href: news/index.html
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/thierrygosselin/standart
+    aria-label: GitHub
 
