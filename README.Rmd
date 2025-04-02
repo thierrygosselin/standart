@@ -44,6 +44,7 @@ library(standart)
 * **Detect**
   * `read_counter`: Count reads/sequences and generate distributions by stratifications or not (think populations, sampling sites, sequencing runs/technologies)
   * `read_depth_plot`: Generate a figure of read coverage group to highlight the different categories of read depth. Reads and sequences are not created equals, some are distinct, unique and with high coverage. These repetitive elements can potentially be problematic in downstream analysis (think paralogs, retrotransposons, transposable elements).
+  * `summary_reads`: will summarise the reads for indel and GC content and run the read_depth_plot.
 * **Selection & Correction**
   * `clean_fq`: Noisy fastq files identified with the functions above can be cleaned. Different options available to tidy those files and have good bookkeeping habits and reporting.
   * `normalize_reads`: Normalize/Rarefy the fastq sequences. This technique can be used for a number of reasons, e.g. to remove or reduce ascertainment bias, discovery bias driving populations polymorphism, missing data patterns, individual heterozygosity problems or patterns, etc.

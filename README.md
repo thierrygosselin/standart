@@ -44,6 +44,8 @@ library(standart)
     high coverage. These repetitive elements can potentially be
     problematic in downstream analysis (think paralogs,
     retrotransposons, transposable elements).
+  - `summary_reads`: will summarise the reads for indel and GC content
+    and run the read_depth_plot.
 - **Selection & Correction**
   - `clean_fq`: Noisy fastq files identified with the functions above
     can be cleaned. Different options available to tidy those files and
