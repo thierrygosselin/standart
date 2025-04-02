@@ -7,7 +7,7 @@
 summary_reads(
   fq.files,
   paired.end = FALSE,
-  output = "02_summary_reads",
+  output = "summary_reads",
   read.depth.plot = TRUE,
   min.coverage.fig = 7L,
   parallel.core = parallel::detectCores() - 1

@@ -36,7 +36,7 @@
 summary_reads <- function(
     fq.files,
     paired.end = FALSE,
-    output = "02_summary_reads",
+    output = "summary_reads",
     read.depth.plot = TRUE,
     min.coverage.fig = 7L,
     parallel.core = parallel::detectCores() - 1
@@ -116,7 +116,7 @@ reads_stats <- function(
 ) {
 
   if (!is.null(p)) p()
-  clean.names <- stackr::clean_fq_filename(basename(fq.files))
+  clean.names <- standart::clean_fq_filename(basename(fq.files))
   if (verbose) message("Sample name: ", clean.names)
 
   read.stats <- vroom::vroom(
@@ -156,12 +156,12 @@ reads_stats <- function(
       GC_PROP = round(GC / LENGTH, 2)
     )
 
-  indel.stats.by.depth.group <- stats_stackr(data = indel, x = "N", group.by = "DEPTH")
-  gc.ratio.by.depth.group <- stats_stackr(data = indel, x = "GC_PROP", group.by = "DEPTH")
+  indel.stats.by.depth.group <- stats_standart(data = indel, x = "N", group.by = "DEPTH")
+  gc.ratio.by.depth.group <- stats_standart(data = indel, x = "GC_PROP", group.by = "DEPTH")
 
   stats.overall <- dplyr::bind_rows(
-    stats_stackr(data = indel, x = "N") %>% dplyr::mutate(GROUP = "INDEL", .before = 1L),
-    stats_stackr(data = indel, x = "GC_PROP") %>% dplyr::mutate(GROUP = "GC", .before = 1L)
+    stats_standart(data = indel, x = "N") %>% dplyr::mutate(GROUP = "INDEL", .before = 1L),
+    stats_standart(data = indel, x = "GC_PROP") %>% dplyr::mutate(GROUP = "GC", .before = 1L)
   ) %>%
     tibble::add_column(.data = ., INDIVIDUALS = clean.names, .before = 1L) %>%
     tibble::add_column(.data = ., TOTAL_READS = total.sequences, .before = 2L)

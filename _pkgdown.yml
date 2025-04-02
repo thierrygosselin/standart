@@ -5,12 +5,13 @@ template:
   light-switch: yes
 
 reference:
-- title: QC
+- title: Detect (QC)
   contents:
   - read_counter
   - read_depth_plot
+  - summary_reads
 
-- title: Utility
+- title: Selection & Correction
   contents:
   - clean_fq
   - normalize_reads
