@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   rad_genomics_computer_setup: rad_genomics_computer_setup.html
   using_standart: using_standart.html
-last_built: 2025-04-02T00:19Z
+last_built: 2025-04-02T00:21Z
 urls:
   reference: https://thierrygosselin.github.io/standart/reference
   article: https://thierrygosselin.github.io/standart/articles
