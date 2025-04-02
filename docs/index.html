@@ -90,15 +90,19 @@
 <li>
 <strong>Detect</strong>
 <ul>
-<li>Count reads/sequences and generate distributions by stratifications (populations, sampling sites, sequencing runs/technologies)</li>
-<li>Generate read coverage group figure: this highlight the different categories of read depth. Reads and sequences are not created equal some are distinct, unique and with high coverage. These repetitive elements can be potentially problematic in downstream analysis (think paralogs, retrotransposons, transposable elements).</li>
+<li>
+<code>read_counter</code>: Count reads/sequences and generate distributions by stratifications or not (think populations, sampling sites, sequencing runs/technologies)</li>
+<li>
+<code>read_depth_plot</code>: Generate a figure of read coverage group to highlight the different categories of read depth. Reads and sequences are not created equals, some are distinct, unique and with high coverage. These repetitive elements can potentially be problematic in downstream analysis (think paralogs, retrotransposons, transposable elements).</li>
 </ul>
 </li>
 <li>
 <strong>Selection &amp; Correction</strong>
 <ul>
-<li>Cleaning: noisy fastq files can be cleaned. Different options here to tidy those files and have good bookeeping habits and reporting.</li>
-<li>Normalize/Rarefy the fastq sequences. This technique can be used for a number of reasons, e.g. to remove or reduce ascertainment bias, discovery bias driving populations polymorphism, missing data patterns, individual heterozygosity problems or patterns, etc.</li>
+<li>
+<code>clean_fq</code>: Noisy fastq files identified with the functions above can be cleaned. Different options available to tidy those files and have good bookkeeping habits and reporting.</li>
+<li>
+<code>normalize_reads</code>: Normalize/Rarefy the fastq sequences. This technique can be used for a number of reasons, e.g. to remove or reduce ascertainment bias, discovery bias driving populations polymorphism, missing data patterns, individual heterozygosity problems or patterns, etc.</li>
 </ul>
 </li>
 <li>

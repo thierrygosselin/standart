@@ -42,11 +42,11 @@ library(standart)
 
 ## Overview
 * **Detect**
-  * Count reads/sequences and generate distributions by stratifications (populations, sampling sites, sequencing runs/technologies)
-  * Generate read coverage group figure: this highlight the different categories of read depth. Reads and sequences are not created equal some are distinct, unique and with high coverage. These repetitive elements can be potentially problematic in downstream analysis (think paralogs, retrotransposons, transposable elements).
+  * `read_counter`: Count reads/sequences and generate distributions by stratifications or not (think populations, sampling sites, sequencing runs/technologies)
+  * `read_depth_plot`: Generate a figure of read coverage group to highlight the different categories of read depth. Reads and sequences are not created equals, some are distinct, unique and with high coverage. These repetitive elements can potentially be problematic in downstream analysis (think paralogs, retrotransposons, transposable elements).
 * **Selection & Correction**
-  * Cleaning: noisy fastq files can be cleaned. Different options here to tidy those files and have good bookeeping habits and reporting.
-  * Normalize/Rarefy the fastq sequences. This technique can be used for a number of reasons, e.g. to remove or reduce ascertainment bias, discovery bias driving populations polymorphism, missing data patterns, individual heterozygosity problems or patterns, etc.
+  * `clean_fq`: Noisy fastq files identified with the functions above can be cleaned. Different options available to tidy those files and have good bookkeeping habits and reporting.
+  * `normalize_reads`: Normalize/Rarefy the fastq sequences. This technique can be used for a number of reasons, e.g. to remove or reduce ascertainment bias, discovery bias driving populations polymorphism, missing data patterns, individual heterozygosity problems or patterns, etc.
 * **Artifactual or Biological signals:** Not certain if the differences between your samples or your sequencing runs is artifactual or biological ? Both noise reduction and normalization can help answer the question.
 
 
