@@ -7,7 +7,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2025--04--01-brightgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2025--04--02-brightgreen.svg)](/commits/master)
 <!-- badges: end -->
 
 standart provides R functions that help you solve the most common
@@ -34,17 +34,25 @@ library(standart)
 
 ## Overview
 
-- Reads/sequences counter and length distribution.
-- Read depth plot that highlights read coverage groups. Distinct and
-  unique reads with high coverage are repetitive elements that when
-  assembled in locus are usually paralogs, retrotransposons,
-  transposable elements, etc.
-- Noise reduction and fastq cleaning.
-- Data normalization/rarefaction to remove or reduce ascertainment bias
-  driving populations polymorphism discovery bias, missing data
-  patterns, individual heterozygosity problems or patterns.
-- Noise reduction and normalization will help to answer the question:
-  are the differences between your samples: artifactual or biological.
+- **Detect**
+  - Count reads/sequences and generate distributions by stratifications
+    (populations, sampling sites, sequencing runs/technologies)
+  - Generate read coverage group figure: this highlight the different
+    categories of read depth. Reads and sequences are not created equal
+    some are distinct, unique and with high coverage. These repetitive
+    elements can be potentially problematic in downstream analysis
+    (think paralogs, retrotransposons, transposable elements).
+- **Selection & Correction**
+  - Cleaning: noisy fastq files can be cleaned. Different options here
+    to tidy those files and have good bookeeping habits and reporting.
+  - Normalize/Rarefy the fastq sequences. This technique can be used for
+    a number of reasons, e.g. to remove or reduce ascertainment bias,
+    discovery bias driving populations polymorphism, missing data
+    patterns, individual heterozygosity problems or patterns, etc.
+- **Artifactual or Biological signals:** Not certain if the differences
+  between your samples or your sequencing runs is artifactual or
+  biological ? Both noise reduction and normalization can help answer
+  the question.
 
 ## Getting help
 

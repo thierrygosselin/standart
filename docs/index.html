@@ -87,11 +87,22 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <ul>
-<li>Reads/sequences counter and length distribution.</li>
-<li>Read depth plot that highlights read coverage groups. Distinct and unique reads with high coverage are repetitive elements that when assembled in locus are usually paralogs, retrotransposons, transposable elements, etc.</li>
-<li>Noise reduction and fastq cleaning.</li>
-<li>Data normalization/rarefaction to remove or reduce ascertainment bias driving populations polymorphism discovery bias, missing data patterns, individual heterozygosity problems or patterns.</li>
-<li>Noise reduction and normalization will help to answer the question: are the differences between your samples: artifactual or biological.</li>
+<li>
+<strong>Detect</strong>
+<ul>
+<li>Count reads/sequences and generate distributions by stratifications (populations, sampling sites, sequencing runs/technologies)</li>
+<li>Generate read coverage group figure: this highlight the different categories of read depth. Reads and sequences are not created equal some are distinct, unique and with high coverage. These repetitive elements can be potentially problematic in downstream analysis (think paralogs, retrotransposons, transposable elements).</li>
+</ul>
+</li>
+<li>
+<strong>Selection &amp; Correction</strong>
+<ul>
+<li>Cleaning: noisy fastq files can be cleaned. Different options here to tidy those files and have good bookeeping habits and reporting.</li>
+<li>Normalize/Rarefy the fastq sequences. This technique can be used for a number of reasons, e.g. to remove or reduce ascertainment bias, discovery bias driving populations polymorphism, missing data patterns, individual heterozygosity problems or patterns, etc.</li>
+</ul>
+</li>
+<li>
+<strong>Artifactual or Biological signals:</strong> Not certain if the differences between your samples or your sequencing runs is artifactual or biological ? Both noise reduction and normalization can help answer the question.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -139,7 +150,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="http://www.repostatus.org/#active" class="external-link"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2025--04--01-brightgreen.svg" alt="Last-changedate"></a></li>
+<li><a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2025--04--02-brightgreen.svg" alt="Last-changedate"></a></li>
 </ul>
 </div>
 
