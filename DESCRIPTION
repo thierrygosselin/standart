@@ -1,6 +1,6 @@
 Package: standart
 Title: standart: solves the most common challenges of genome reduction sequences quality control
-Version: 0.0.0.1
+Version: 0.0.0.2
 Authors@R: c(
   person("Thierry", "Gosselin", email = "thierry.gosselin@csiro.au", role = c("aut", "cre"))
   )
