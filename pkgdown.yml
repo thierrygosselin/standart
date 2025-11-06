@@ -1,10 +1,10 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   rad_genomics_computer_setup: rad_genomics_computer_setup.html
   using_standart: using_standart.html
-last_built: 2025-04-02T03:15Z
+last_built: 2025-11-06T22:48Z
 urls:
   reference: https://thierrygosselin.github.io/standart/reference
   article: https://thierrygosselin.github.io/standart/articles
