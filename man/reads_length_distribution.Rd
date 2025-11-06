@@ -2,51 +2,71 @@
 % Please edit documentation in R/reads_length_distribution.R
 \name{reads_length_distribution}
 \alias{reads_length_distribution}
-\title{Generate the read length distribution of a fastq file}
+\title{Generate the read length distribution}
 \usage{
 reads_length_distribution(
-  fq.file,
+  fq.files,
   parallel.core = parallel::detectCores() - 1,
-  with.future = FALSE
+  with.future = FALSE,
+  chunk.size = 1e+06,
+  show.progress = TRUE
 )
 }
 \arguments{
-\item{fq.file}{(character, path). The path to the fastq file
-(individal, lane or chip).
-Default: \code{fq.file = "my-sample.fq.gz"}.}
+\item{fq.files}{(character, path) A character vector of paths to FASTQ files or a folder containing FASTQ files.
+Default: \code{fq.files = "my-sample.fq.gz"}.}
 
-\item{parallel.core}{(integer) Enable parallel execution with the number of threads.
+\item{parallel.core}{(integer) Number of cores to use when with.future is TRUE.
 Default: \code{parallel.core = parallel::detectCores() - 1}.}
 
-\item{with.future}{(logical) When \code{TRUE} will use future package to run
-the code in parallel. Set \code{parallel.core} to the number of physical, not
-logical, cores. See example below.
+\item{with.future}{(logical) Whether to use parallel processing via the future package.
 Default: \code{with.future = FALSE}.}
+
+\item{chunk.size}{(integer) Number of reads per chunk to stream from each FASTQ file.
+Default: \code{chunk.size = 1e6}.}
+
+\item{show.progress}{(logical) Whether to display a progress bar.
+Default: \code{show.progress = TRUE}.}
 }
 \value{
-The function returns a plot and a tibble with potential reads length
-thresholds and associated number of reads.
+A tibble with columns: FILE and READ_LENGTH.
 }
 \description{
-This function reads the fastq file of an individual, lane or chip
-and generate the read length distribution to help decide the threshold to cut the
-reads to a specific length.
+This function reads the fastq file of an individual, lane/chip or
+entire folder of fastq files.
+The read length distribution is generated and saved in the working directory.
+This helps to decide the threshold to cut the reads to a specific length.
+
+This function reads FASTQ files corresponding to a single individual, a sequencing lane/chip,
+or an entire folder containing multiple FASTQ files. It generates a distribution of read lengths,
+which is saved to the working directory.
+
+This distribution can be used to determine an appropriate threshold for keeping or
+trimming reads of a specific length.
 }
 \details{
 coming soon, just try it in the meantime...
 }
 \examples{
 \dontrun{
-require(ShortRead)
-reads.length.info <- standart::reads_length_distribution(
-  fq.file = "my-sample.fq.gz")
+# Example 1: Process a folder of FASTQ files with progress bar
 
- # with future package to get faster results:
- require(future)
- require(listenv)
- reads.length.info <- standart::reads_length_distribution(
-  fq.file = "my-sample.fq.gz",
-  with.future = TRUE
-  )
+read_lengths <- read_length_many(
+  fq.files = fq.files,
+  with.future = TRUE,
+  parallel.core = 4,
+  chunk.size = 500000,
+  show.progress = TRUE
+)
+
+# View summary
+dplyr::glimpse(read_lengths)
+
+# Optional: Plot read length distribution
+library(ggplot2)
+ggplot(read_lengths, aes(x = READ_LENGTH)) +
+  geom_histogram(binwidth = 1) +
+  facet_wrap(~ FILE, scales = "free_y") +
+  theme_minimal()
 }
 }

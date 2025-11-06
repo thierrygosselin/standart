@@ -10,6 +10,10 @@
 #' color on the figure.
 #' Default: \code{min.coverage.fig = 7L}.
 
+#' @param target.read.length (integer). The minium length of your reads to consider.
+#' Usually this number is between (60 and 120).
+#' Default: \code{target.read.length = NULL}.
+
 
 #' @param output (character, path) Where the figure will be saved.
 #' Default: \code{"read_depth_plot"}.
@@ -64,6 +68,7 @@
 read_depth_plot <- function(
     fq.file,
     min.coverage.fig = 7L,
+    target.read.length = NULL,
     output = "read_depth_plot",
     parallel.core = parallel::detectCores() - 1
 ) {
@@ -96,11 +101,29 @@ read_depth_plot <- function(
   total.sequences <- nrow(read.stats)
   message("Number of reads: ", total.sequences)
 
+  # # discard reads with length below threshold -------------------------------
+  if (!is.null(target.read.length)) {
+    target.read.length <- as.numeric(target.read.length)
+
+
+  read.stats %<>%
+    dplyr::mutate(
+      LENGTH = stringi::stri_length(str = READS)
+    )
+  too.short.blacklist <- read.stats %>%
+    dplyr::filter(LENGTH < target.read.length)
+  n.bl <- nrow(too.short.blacklist)
+  blacklist.prop <- round(n.bl / total.sequences, 2)
+  message("Number of reads with length below threshold of ", target.read.length, "bp: ", n.bl, " (", blacklist.prop, " of total reads)" )
+  read.stats %<>%
+    dplyr::filter(LENGTH >= target.read.length)
+
+  message("Note: proportions in the figure will not add up unless you include the proportion of blacklisted reads...")
+  }
+
   # stats ----------------------------------------------------------------------
   message("Calculating reads stats...")
   read.stats %<>% dplyr::count(READS, name = "DEPTH")
-
-  # check <- read.stats %>% dplyr::distinct(READS)
 
   # detect indel and / or low quality reads...----------------------------------
   # Number of N
@@ -108,21 +131,21 @@ read_depth_plot <- function(
   # DNA with low GC-content is less stable than DNA with high GC-content
 
 
-  indel <- read.stats %>%
-    dplyr::mutate(
-      LENGTH = stringi::stri_length(str = READS),
-      N = stringi::stri_count_fixed(str = READS, pattern = "N"),
-      N_PROP = round(N / LENGTH, 2),
-      GC = stringi::stri_count_fixed(str = READS, pattern = "C") +
-        stringi::stri_count_fixed(str = READS, pattern = "G"),
-      GC_PROP = round(GC / LENGTH, 2)
-    )
-
-  indel.stats.by.depth.group <- stats_standart(data = indel, x = "N", group.by = "DEPTH")
-  indel.stats.overall <- stats_standart(data = indel, x = "N")
-
-  gc.ratio.by.depth.group <- stats_standart(data = indel, x = "GC_PROP", group.by = "DEPTH")
-  gc.ratio.overall <- stats_standart(data = indel, x = "GC_PROP")
+  # indel <- read.stats %>%
+  #   dplyr::mutate(
+  #     LENGTH = stringi::stri_length(str = READS),
+  #     N = stringi::stri_count_fixed(str = READS, pattern = "N"),
+  #     N_PROP = round(N / LENGTH, 2),
+  #     GC = stringi::stri_count_fixed(str = READS, pattern = "C") +
+  #       stringi::stri_count_fixed(str = READS, pattern = "G"),
+  #     GC_PROP = round(GC / LENGTH, 2)
+  #   )
+  #
+  # indel.stats.by.depth.group <- stats_standart(data = indel, x = "N", group.by = "DEPTH")
+  # indel.stats.overall <- stats_standart(data = indel, x = "N")
+  #
+  # gc.ratio.by.depth.group <- stats_standart(data = indel, x = "GC_PROP", group.by = "DEPTH")
+  # gc.ratio.overall <- stats_standart(data = indel, x = "GC_PROP")
 
   # stats ----------------------------------------------------------------------
   # check <- read.stats %>% dplyr::filter(DEPTH > 100) %>% dplyr::count(DEPTH, name = "NUMBER_DISTINCT_READS")
@@ -130,6 +153,9 @@ read_depth_plot <- function(
 
   read.stats %<>% dplyr::count(DEPTH, name = "NUMBER_DISTINCT_READS")
   # sum(read.stats$NUMBER_DISTINCT_READS)
+
+  # test <- read.stats %>% dplyr::count(DEPTH, name = "NUMBER_DISTINCT_READS")
+
 
   depth.group.levels <- c("low coverage", "target", "high coverage", "distinct reads")
 

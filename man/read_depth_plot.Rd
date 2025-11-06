@@ -7,6 +7,7 @@
 read_depth_plot(
   fq.file,
   min.coverage.fig = 7L,
+  target.read.length = NULL,
   output = "read_depth_plot",
   parallel.core = parallel::detectCores() - 1
 )
@@ -18,6 +19,10 @@ Default: \code{fq.file = "my-sample.fq.gz"}.}
 \item{min.coverage.fig}{(integer). Minimum coverage used to draw the
 color on the figure.
 Default: \code{min.coverage.fig = 7L}.}
+
+\item{target.read.length}{(integer). The minium length of your reads to consider.
+Usually this number is between (60 and 120).
+Default: \code{target.read.length = NULL}.}
 
 \item{output}{(character, path) Where the figure will be saved.
 Default: \code{"read_depth_plot"}.}

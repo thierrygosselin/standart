@@ -10,7 +10,8 @@ clean_fq_filename <- function(x) {
       pattern = unique(fq_file_type(.)),
       replacement = "",
       vectorize_all = FALSE
-    )
+    ) %>%
+    basename
 }#End clean_fq_filename
 
 

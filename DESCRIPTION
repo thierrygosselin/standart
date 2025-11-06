@@ -21,6 +21,7 @@ Depends:
 Imports: 
     assertthat,
     dplyr,
+    fs,
     future,
     future.apply,
     ggplot2,

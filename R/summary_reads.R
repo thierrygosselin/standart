@@ -39,6 +39,7 @@ summary_reads <- function(
     output = "summary_reads",
     read.depth.plot = TRUE,
     min.coverage.fig = 7L,
+    target.read.length = NULL,
     parallel.core = parallel::detectCores() - 1
 ) {
   opt.change <- getOption("width")
@@ -71,6 +72,7 @@ summary_reads <- function(
       .f = reads_stats,
       read.depth.plot = read.depth.plot,
       min.coverage.fig = min.coverage.fig,
+      target.read.length = target.read.length,
       output = output,
       parallel.core = parallel.core,
       p = p,
@@ -83,6 +85,7 @@ summary_reads <- function(
       fq.files = fq.files,
       read.depth.plot = read.depth.plot,
       min.coverage.fig = min.coverage.fig,
+      target.read.length = target.read.length,
       output = output,
       parallel.core = parallel.core,
       p = NULL,
@@ -109,6 +112,7 @@ reads_stats <- function(
     fq.files,
     read.depth.plot = TRUE,
     min.coverage.fig = 7L,
+    target.read.length = target.read.length,
     output = "summary_reads",
     parallel.core = parallel::detectCores() - 1,
     p = NULL,
@@ -135,6 +139,26 @@ reads_stats <- function(
 
   total.sequences <- nrow(read.stats)
   if (verbose) message("Number of reads: ", total.sequences)
+
+  # # discard reads with length below threshold -------------------------------
+  if (!is.null(target.read.length)) {
+    target.read.length <- as.numeric(target.read.length)
+
+
+    read.stats %<>%
+      dplyr::mutate(
+        LENGTH = stringi::stri_length(str = READS)
+      )
+    too.short.blacklist <- read.stats %>%
+      dplyr::filter(LENGTH < target.read.length)
+    n.bl <- nrow(too.short.blacklist)
+    blacklist.prop <- round(n.bl / total.sequences, 2)
+    message("Number of reads with length below threshold of ", target.read.length, "bp: ", n.bl, " (", blacklist.prop, " of total reads)" )
+    read.stats %<>%
+      dplyr::filter(LENGTH >= target.read.length)
+
+    message("Note: proportions in the figure will not add up unless you include the proportion of blacklisted reads...")
+  }
 
   # stats ----------------------------------------------------------------------
   if (verbose) message("Calculating reads stats...")
@@ -214,7 +238,7 @@ reads_stats <- function(
 
     # safely generate the fig
     # with low reads, this generates an error... hence the safe function....
-    rdp <- function(read.stats) {
+    rdp <- function(read.stats, clean.names, total.sequences, hap.read.depth.group.stats) {
       DEPTH <- NULL
       NUMBER_DISTINCT_READS <- NULL
       rdp <- ggplot2::ggplot(data = read.stats, ggplot2::aes(x = DEPTH, y = NUMBER_DISTINCT_READS)) +
@@ -237,14 +261,21 @@ reads_stats <- function(
           axis.title = ggplot2::element_text(size = 16, face = "bold"),
           legend.title = ggplot2::element_text(size = 16, face = "bold"),
           legend.text = ggplot2::element_text(size = 16, face = "bold"),
-          legend.position = c(0.7,0.8)
+          legend.position = "inside",# required new flag
+          legend.position.inside = c(0.95,0.95),
+          legend.justification = c(1, 1) # align top-right of legend
         )
       rdp
     } #End rdp
 
     safe_ggplot <- purrr::safely(.f = rdp)
 
-    read.depth.plot <- safe_ggplot(read.stats)
+    read.depth.plot <- safe_ggplot(
+      read.stats = read.stats,
+      clean.names = clean.names,
+      total.sequences = total.sequences,
+      hap.read.depth.group.stats = hap.read.depth.group.stats
+      )
 
     if (is.null(read.depth.plot$error)) {
       filename.plot <- file.path(output, stringi::stri_join(clean.names, "_hap_read_depth.png"))

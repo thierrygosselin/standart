@@ -10,6 +10,7 @@ summary_reads(
   output = "summary_reads",
   read.depth.plot = TRUE,
   min.coverage.fig = 7L,
+  target.read.length = NULL,
   parallel.core = parallel::detectCores() - 1
 )
 }
@@ -32,6 +33,10 @@ Default: \code{read.depth.plot = TRUE}.}
 \item{min.coverage.fig}{(integer). Minimum coverage used to draw the
 color on the figure.
 Default: \code{min.coverage.fig = 7L}.}
+
+\item{target.read.length}{(integer). The minium length of your reads to consider.
+Usually this number is between (60 and 120).
+Default: \code{target.read.length = NULL}.}
 
 \item{parallel.core}{(integer) Enable parallel execution with the number of threads.
 Default: \code{parallel.core = parallel::detectCores() - 1}.}
